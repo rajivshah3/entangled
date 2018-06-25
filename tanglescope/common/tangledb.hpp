@@ -1,7 +1,8 @@
 #pragma once
 
+#include <string>
 #include <chrono>
-#include <optional>
+#include <boost/optional.hpp>
 #include <shared_mutex>
 #include <unordered_map>
 
@@ -16,7 +17,7 @@ class TangleDB {
     TXRecord() = default;
   };
 
-  std::optional<TXRecord> find(const std::string& hash);
+    boost::optional<TXRecord> find(const std::string& hash);
 
   void put(const TXRecord& tx);
   void removeAgedTxs(uint32_t ageInSeconds);

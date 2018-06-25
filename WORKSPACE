@@ -2,8 +2,8 @@ workspace(name = "org_iota_entangled")
 
 git_repository(
     name = "rules_iota",
-    commit = "b5e5b91d955f257e47c7803808073658387f8a86",
-    remote = "https://github.com/iotaledger/rules_iota.git",
+    commit = "65be5655cd0bd511d7f120f248db20ec742a614b",
+    remote = "https://github.com/rajivshah3/rules_iota.git",
 )
 
 android_sdk_repository(

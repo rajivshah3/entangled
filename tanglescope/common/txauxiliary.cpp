@@ -3,6 +3,7 @@
 #include <glog/logging.h>
 #include <iota/tanglescope/common/tangledb.hpp>
 #include <set>
+#include <boost/optional/optional.hpp>
 
 namespace iota {
 namespace tanglescope {
@@ -111,7 +112,7 @@ boost::future<void> handleUnseenTransactions(
     unconfirmedVec.erase(
         remove_if(unconfirmedVec.begin(), unconfirmedVec.end(),
                   [](std::string txHash) {
-                    return TangleDB::instance().find(txHash).has_value();
+                      return (TangleDB::instance().find(txHash) != boost::none);
                   }),
         unconfirmedVec.end());
     std::for_each(unconfirmedVec.begin(), unconfirmedVec.end(),
