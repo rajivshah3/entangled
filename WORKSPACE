@@ -37,6 +37,26 @@ android_ndk_repository(
     api_level = 14,
 )
 
+git_repository(
+    name = "build_bazel_rules_apple",
+    remote = "https://github.com/bazelbuild/rules_apple.git",
+    tag = "0.6.0",
+)
+
+git_repository(
+    name = "bazel_skylib",
+    remote = "https://github.com/bazelbuild/bazel-skylib.git",
+    tag = "0.5.0",
+)
+
+load(
+    "@build_bazel_rules_apple//apple:repositories.bzl",
+    "apple_rules_dependencies",
+)
+
+apple_rules_dependencies()
+
+
 load("@rules_iota//:defs.bzl", "iota_deps")
 
 iota_deps()

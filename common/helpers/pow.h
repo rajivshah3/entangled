@@ -9,6 +9,8 @@
 #define _COMMON_HELPERS_POW_H
 
 #include <stdint.h>
+#include <stddef.h>
+#include <sys/types.h>
 
 #include "common/errors.h"
 #include "common/model/bundle.h"
