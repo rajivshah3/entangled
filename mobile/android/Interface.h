@@ -12,40 +12,45 @@ extern "C" {
  * Method:    iota_pow_trytes
  * Signature: (Ljava/lang/String;I)Ljava/lang/String;
  */
-JNIEXPORT jstring JNICALL Java_org_iota_mobile_Interface_iota_1pow_1trytes
-  (JNIEnv *, jclass, jstring, jint);
+JNIEXPORT jstring JNICALL Java_org_iota_mobile_Interface_iota_1pow_1trytes(
+    JNIEnv *, jclass, jstring, jint);
 
 /*
  * Class:     org_iota_mobile_Interface
  * Method:    iota_pow_bundle
- * Signature: ([Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)[Ljava/lang/String;
+ * Signature:
+ * ([Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)[Ljava/lang/String;
  */
-JNIEXPORT jobjectArray JNICALL Java_org_iota_mobile_Interface_iota_1pow_1bundle
-  (JNIEnv *, jclass, jobjectArray, jstring, jstring, jint);
+JNIEXPORT jobjectArray JNICALL Java_org_iota_mobile_Interface_iota_1pow_1bundle(
+    JNIEnv *, jclass, jobjectArray, jstring, jstring, jint);
 
 /*
  * Class:     org_iota_mobile_Interface
  * Method:    iota_sign_address_gen
  * Signature: (Ljava/lang/String;II)Ljava/lang/String;
  */
-JNIEXPORT jstring JNICALL Java_org_iota_mobile_Interface_iota_1sign_1address_1gen
-  (JNIEnv *, jclass, jstring, jint, jint);
+JNIEXPORT jstring JNICALL
+Java_org_iota_mobile_Interface_iota_1sign_1address_1gen(JNIEnv *, jclass,
+                                                        jstring, jint, jint);
 
 /*
  * Class:     org_iota_mobile_Interface
  * Method:    iota_sign_signature_gen
  * Signature: (Ljava/lang/String;IILjava/lang/String;)Ljava/lang/String;
  */
-JNIEXPORT jstring JNICALL Java_org_iota_mobile_Interface_iota_1sign_1signature_1gen
-  (JNIEnv *, jclass, jstring, jint, jint, jstring);
+JNIEXPORT jstring JNICALL
+Java_org_iota_mobile_Interface_iota_1sign_1signature_1gen(JNIEnv *, jclass,
+                                                          jstring, jint, jint,
+                                                          jstring);
 
 /*
  * Class:     org_iota_mobile_Interface
  * Method:    iota_digest
  * Signature: (Ljava/lang/String;)Ljava/lang/String;
  */
-JNIEXPORT jstring JNICALL Java_org_iota_mobile_Interface_iota_1digest
-  (JNIEnv *, jclass, jstring);
+JNIEXPORT jstring JNICALL Java_org_iota_mobile_Interface_iota_1digest(JNIEnv *,
+                                                                      jclass,
+                                                                      jstring);
 
 #ifdef __cplusplus
 }

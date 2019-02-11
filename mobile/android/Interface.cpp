@@ -3,9 +3,9 @@
 #include <cstring>
 #include "jni.h"
 
+#include "common/helpers/digest.h"
 #include "common/helpers/pow.h"
 #include "common/helpers/sign.h"
-#include "common/helpers/digest.h"
 
 #include "Interface.h"
 
@@ -76,13 +76,14 @@ Java_org_iota_mobile_Interface_iota_1sign_1signature_1gen(
  * Method:    iota_digest
  * Signature: (Ljava/lang/String;)Ljava/lang/String;
  */
-JNIEXPORT jstring JNICALL Java_org_iota_mobile_Interface_iota_1digest
-  (JNIEnv * env, jclass thiz, jstring jtrytes);
-  const char trytes = env->GetStringUTFChars(jtrytes, 0);
+JNIEXPORT jstring JNICALL Java_org_iota_mobile_Interface_iota_1digest(
+    JNIEnv* env, jclass thiz, jstring jtrytes) {
+  const char* trytes = env->GetStringUTFChars(jtrytes, 0);
 
   char* digest = iota_digest(trytes);
   jstring out = env->NewStringUTF(digest);
   free(digest);
 
   return out;
+}
 }
