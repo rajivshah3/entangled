@@ -54,7 +54,7 @@ NSArray* iota_ios_pow_bundle(NSArray* txsTrytes, NSString* trunk,
                          NUM_TRYTES_SERIALIZED_TRANSACTION, serializedFlexTrits,
                          NUM_TRITS_SERIALIZED_TRANSACTION,
                          NUM_TRITS_SERIALIZED_TRANSACTION);
-    outputTxsTrytesSerialized = [NSString stringWithFormat:@"%s", address];
+    outputTxsTrytesSerialized = [NSString stringWithFormat:@"%s", serializedTrytes];
     [outputTxsTrytes addObject:outputTxsTrytesSerialized];
   }
 
