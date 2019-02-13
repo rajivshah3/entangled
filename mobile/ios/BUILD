@@ -10,7 +10,7 @@ ios_static_framework(
 
 objc_library(
     name = "ios_bindings_classes",
-    srcs = ["Interface.m"],
+    srcs = ["Interface.mm"],
     hdrs = ["Interface.h"],
     deps = ["//common/helpers"],
 )
