@@ -3,7 +3,7 @@
 //  EntangledKit
 //
 //
-//  Copyright © 2018 IOTA Foundation. All rights reserved.
+//  Copyright © 2019 IOTA Foundation. All rights reserved.
 //
 
 #ifndef __MOBILE__IOS_INTERFACE_H_
@@ -19,5 +19,7 @@ char* iota_sign_address_gen(const char* seed, const int index,
                             const int security);
 char* iota_sign_signature_gen(const char* seed, const int index,
                               const int security, const char* bundleHash);
+char* iota_ios_pow_bundle(NSArray* txsTrytes, NSString* trunk, NSString* branch,
+                          int mwm);
 
 #endif  // __MOBILE__IOS_INTERFACE_H_
