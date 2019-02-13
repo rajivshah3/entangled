@@ -39,7 +39,7 @@ NSArray* iota_ios_pow_bundle(NSArray* txsTrytes, NSString* trunk,
   for (NSString* txString in txsTrytes) {
     flex_trits_from_trytes(
         serializedFlexTrits, NUM_TRYTES_SERIALIZED_TRANSACTION,
-        (tryte_t*)[txString cStringUsingEncoding:NSUTF8StringEncoding]);
+        (tryte_t*)[txString cStringUsingEncoding:NSUTF8StringEncoding], NUM_TRYTES_SERIALIZED_TRANSACTION, NUM_TRYTES_SERIALIZED_TRANSACTION);
     transaction_deserialize_from_trits(&tx, serializedFlexTrits, false);
     bundle_transactions_add(bundle, &tx);
   }
