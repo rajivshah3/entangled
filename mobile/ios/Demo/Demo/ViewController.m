@@ -21,8 +21,11 @@
     NSLog(@"===Entangled iOS Demo===");
     
     
-    NSArray* array = @[[@"" stringByPaddingToLength:2673 withString:@"9" startingAtIndex:0]];
-    [EntangledIOSBindings iota_ios_pow_bundle:array trunk:[@"" stringByPaddingToLength:81 withString:@"9" startingAtIndex:0] branch:[@"" stringByPaddingToLength:81 withString:@"9" startingAtIndex:0] mwm:9];
+    NSArray* array = @[TX_0_TRYTES, TX_1_TRYTES, TX_2_TRYTES];
+    
+    NSArray* bundle = [EntangledIOSBindings iota_ios_pow_bundle:array trunk:@"HYDAVPDGIIFDZVDYRRKGKFEOYOMGE9AQMKTN9XFYWOHGUWLAVFONTBAFFAXFMACGBSLDHPVKIC9WZ9999" branch:@"RLACKHIZIJPGPK9JRXOGJNPGVIXHDJWQSDZDNMVPZVXKHAFVVWJRHHVMPKQHKSMNVQBNANTDOEBY99999" mwm:14];
+    NSLog(@"%@", bundle);
+    
     /*
     // PoW
     NSLog(@"Starting PoW");

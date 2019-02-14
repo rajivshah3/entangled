@@ -30,9 +30,10 @@
   NSMutableString* outputTxsTrytesSerialized = @"";
   size_t i = 0;
 
-  const char* ctrunk = [trunk cStringUsingEncoding:NSUTF8StringEncoding];
-  flex_trits_from_trytes(flexTrunk, NUM_TRITS_TRUNK, (tryte_t*)ctrunk,
-                         NUM_TRYTES_TRUNK, NUM_TRYTES_TRUNK);
+  flex_trits_from_trytes(
+      flexTrunk, NUM_TRITS_TRUNK,
+      (tryte_t*)[trunk cStringUsingEncoding:NSUTF8StringEncoding],
+      NUM_TRYTES_TRUNK, NUM_TRYTES_TRUNK);
   flex_trits_from_trytes(
       flexBranch, NUM_TRITS_BRANCH,
       (tryte_t*)[branch cStringUsingEncoding:NSUTF8StringEncoding],
@@ -41,7 +42,7 @@
 
   for (NSString* txString in txsTrytes) {
     flex_trits_from_trytes(
-        serializedFlexTrits, NUM_TRYTES_SERIALIZED_TRANSACTION,
+        serializedFlexTrits, NUM_TRITS_SERIALIZED_TRANSACTION,
         (tryte_t*)[txString cStringUsingEncoding:NSUTF8StringEncoding],
         NUM_TRYTES_SERIALIZED_TRANSACTION, NUM_TRYTES_SERIALIZED_TRANSACTION);
     transaction_deserialize_from_trits(&tx, serializedFlexTrits, false);
