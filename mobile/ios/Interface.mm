@@ -13,8 +13,12 @@
 #include "common/helpers/pow.h"
 #include "common/helpers/sign.h"
 
-NSArray* iota_ios_pow_bundle(NSArray* txsTrytes, NSString* trunk,
-                             NSString* branch, int mwm) {
+@implementation EntangledIOSBindings
+
++ (NSArray*)iota_ios_pow_bundle:(NSArray*)txsTrytes
+                          trunk:(NSString*)trunk
+                         branch:(NSString*)branch
+                            mwm:(int)mwm {
   bundle_transactions_t* bundle = NULL;
   iota_transaction_t tx;
   iota_transaction_t* curTx = NULL;
@@ -26,10 +30,9 @@ NSArray* iota_ios_pow_bundle(NSArray* txsTrytes, NSString* trunk,
   NSMutableString* outputTxsTrytesSerialized = @"";
   size_t i = 0;
 
-  flex_trits_from_trytes(
-      flexTrunk, NUM_TRITS_TRUNK,
-      (tryte_t*)[trunk cStringUsingEncoding:NSUTF8StringEncoding],
-      NUM_TRYTES_TRUNK, NUM_TRYTES_TRUNK);
+  const char* ctrunk = [trunk cStringUsingEncoding:NSUTF8StringEncoding];
+  flex_trits_from_trytes(flexTrunk, NUM_TRITS_TRUNK, (tryte_t*)ctrunk,
+                         NUM_TRYTES_TRUNK, NUM_TRYTES_TRUNK);
   flex_trits_from_trytes(
       flexBranch, NUM_TRITS_BRANCH,
       (tryte_t*)[branch cStringUsingEncoding:NSUTF8StringEncoding],
@@ -39,7 +42,8 @@ NSArray* iota_ios_pow_bundle(NSArray* txsTrytes, NSString* trunk,
   for (NSString* txString in txsTrytes) {
     flex_trits_from_trytes(
         serializedFlexTrits, NUM_TRYTES_SERIALIZED_TRANSACTION,
-        (tryte_t*)[txString cStringUsingEncoding:NSUTF8StringEncoding], NUM_TRYTES_SERIALIZED_TRANSACTION, NUM_TRYTES_SERIALIZED_TRANSACTION);
+        (tryte_t*)[txString cStringUsingEncoding:NSUTF8StringEncoding],
+        NUM_TRYTES_SERIALIZED_TRANSACTION, NUM_TRYTES_SERIALIZED_TRANSACTION);
     transaction_deserialize_from_trits(&tx, serializedFlexTrits, false);
     bundle_transactions_add(bundle, &tx);
   }
@@ -54,7 +58,8 @@ NSArray* iota_ios_pow_bundle(NSArray* txsTrytes, NSString* trunk,
                          NUM_TRYTES_SERIALIZED_TRANSACTION, serializedFlexTrits,
                          NUM_TRITS_SERIALIZED_TRANSACTION,
                          NUM_TRITS_SERIALIZED_TRANSACTION);
-    outputTxsTrytesSerialized = [NSString stringWithFormat:@"%s", serializedTrytes];
+    outputTxsTrytesSerialized =
+        [NSString stringWithFormat:@"%s", serializedTrytes];
     [outputTxsTrytes addObject:outputTxsTrytesSerialized];
   }
 
@@ -62,3 +67,5 @@ done:
   bundle_transactions_free(&bundle);
   return outputTxsTrytes;
 }
+
+@end
